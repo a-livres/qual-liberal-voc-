@@ -276,12 +276,12 @@ const LABELS = {
 
 const questions = [
 
-  // 1. REDISTRIBUIÇÃO
+  // 1. REDISTRIBUIÇÃO — 4 opções
   {
     text: "O Estado pode usar impostos para reduzir desigualdades econômicas?",
     options: [
       {
-        text: "Sim: desigualdades injustas produzem diferenças de poder político que corroem a própria liberdade.",
+        text: "Sim: desigualdades injustas corroem a liberdade política e precisam ser corrigidas por instituições justas.",
         scores: { rawls: 2, nussbaum: 1, arendt: 1 }
       },
       {
@@ -289,25 +289,17 @@ const questions = [
         scores: { nussbaum: 2, rawls: 1, mill: 1 }
       },
       {
-        text: "Apenas em medida muito limitada: impostos acima do mínimo necessário violam direitos individuais.",
+        text: "Apenas para financiar proteção de direitos básicos: impostos além disso violam a integridade das pessoas.",
         scores: { nozick: 2, mill: 1 }
       },
       {
-        text: "Não: qualquer redistribuição forçada equivale a trabalho compulsório e viola a integridade das pessoas.",
-        scores: { nozick: 3 }
-      },
-      {
-        text: "Redistribuição ampla destrói o sistema de preços e o conhecimento disperso que mercados coordenam.",
-        scores: { hayek: 2, friedman: 1 }
-      },
-      {
-        text: "Transferências diretas são preferíveis a burocracia assistencial, mas devem ser modestas e previsíveis.",
-        scores: { friedman: 2, hayek: 1 }
+        text: "Não: redistribuição ampla destrói o sistema de preços; transferências diretas devem ser modestas e previsíveis.",
+        scores: { hayek: 2, friedman: 2 }
       }
     ]
   },
 
-  // 2. LIBERDADE DE EXPRESSÃO
+  // 2. LIBERDADE DE EXPRESSÃO — 5 opções
   {
     text: "Como tratar opiniões consideradas ofensivas ou moralmente erradas?",
     options: [
@@ -316,51 +308,39 @@ const questions = [
         scores: { mill: 2, hayek: 1, nozick: 1 }
       },
       {
-        text: "O debate público livre é a própria essência da vida democrática: censura destrói o espaço plural que nos torna livres.",
+        text: "O debate público livre é a essência da democracia: censura destrói o espaço plural que nos torna livres.",
         scores: { arendt: 2, mill: 1 }
       },
       {
-        text: "Tolerá-las em regra, mas o Estado pode limitá-las quando sistematicamente excluem grupos do debate igualitário.",
+        text: "Tolerá-las em regra, mas o Estado pode limitá-las quando excluem sistematicamente grupos do debate igualitário.",
         scores: { rawls: 2, nussbaum: 1 }
       },
       {
-        text: "Qualquer regulação estatal do discurso cria precedente perigoso; o caminho são ações civis, não proibições.",
-        scores: { nozick: 2, hayek: 1, mill: 1 }
-      },
-      {
-        text: "Expressões que negam capacidades básicas ou a dignidade de grupos merecem atenção especial das instituições.",
+        text: "Expressões que negam a dignidade de grupos vulneráveis merecem atenção especial das instituições.",
         scores: { nussbaum: 2, rawls: 1 }
       },
       {
-        text: "Livre concorrência de ideias funciona como livre concorrência de mercado: interferência estatal distorce ambos.",
-        scores: { friedman: 2, hayek: 1 }
+        text: "Livre concorrência de ideias funciona como livre mercado: qualquer regulação estatal distorce ambos.",
+        scores: { friedman: 2, hayek: 1, nozick: 1 }
       }
     ]
   },
 
-  // 3. PAPEL DO ESTADO NA ECONOMIA
+  // 3. PAPEL DO ESTADO NA ECONOMIA — 4 opções
   {
-    text: "Qual deve ser o tamanho e o escopo da intervenção estatal na economia?",
+    text: "Qual deve ser o papel do Estado na economia?",
     options: [
       {
-        text: "O Estado deve garantir uma estrutura básica justa: igualdade de oportunidades e proteção aos menos favorecidos.",
-        scores: { rawls: 2, nussbaum: 1 }
+        text: "Garantir uma estrutura básica justa: igualdade de oportunidades e proteção concreta aos menos favorecidos.",
+        scores: { rawls: 2, nussbaum: 2 }
       },
       {
-        text: "Apenas proteger direitos individuais: contratos, propriedade, segurança pessoal. Nada além disso é legítimo.",
-        scores: { nozick: 3 }
+        text: "Apenas proteger direitos individuais: contratos, propriedade e segurança pessoal. Nada além disso é legítimo.",
+        scores: { nozick: 3, hayek: 1 }
       },
       {
-        text: "Manter ordem jurídica e concorrência; qualquer planejamento além disso destrói conhecimento que o mercado coordena.",
-        scores: { hayek: 2, friedman: 1 }
-      },
-      {
-        text: "Regras monetárias simples e estáveis; governos que tentam 'afinar' ciclos econômicos produzem instabilidade crônica.",
-        scores: { friedman: 2, hayek: 1 }
-      },
-      {
-        text: "Investir ativamente em saúde, educação e proteção social: sem isso, liberdade é privilégio de poucos.",
-        scores: { nussbaum: 2, rawls: 1 }
+        text: "Manter ordem jurídica e regras monetárias simples; qualquer planejamento além disso produz instabilidade e perda de liberdade.",
+        scores: { hayek: 2, friedman: 2 }
       },
       {
         text: "Interferir o mínimo necessário para proteger liberdades civis; além disso, o indivíduo sabe melhor o que é bom para si.",
@@ -369,7 +349,7 @@ const questions = [
     ]
   },
 
-  // 4. DESIGUALDADE
+  // 4. DESIGUALDADE — 5 opções
   {
     text: "Desigualdade econômica é um problema que a sociedade deve corrigir?",
     options: [
@@ -378,29 +358,25 @@ const questions = [
         scores: { rawls: 3 }
       },
       {
-        text: "Sim, quando impede pessoas de desenvolver capacidades humanas fundamentais como saúde, educação ou participação social.",
+        text: "Sim, quando impede pessoas de desenvolver capacidades humanas fundamentais como saúde, educação e participação.",
         scores: { nussbaum: 2, rawls: 1 }
       },
       {
-        text: "Apenas indiretamente: desigualdade extrema pode destruir o espaço público e produzir massas politicamente passivas.",
+        text: "Apenas indiretamente: desigualdade extrema destrói o espaço público e produz massas politicamente passivas.",
         scores: { arendt: 2, rawls: 1 }
       },
       {
-        text: "Não em si mesma: desigualdades resultantes de trocas livres e legítimas são justas, independente do resultado final.",
-        scores: { nozick: 2, hayek: 1 }
+        text: "Não em si mesma: desigualdades de trocas livres são justas e o que importa é mobilidade, não igualdade de resultados.",
+        scores: { nozick: 2, friedman: 1, hayek: 1 }
       },
       {
-        text: "Não prioritariamente: o que importa é mobilidade e crescimento, não a diferença entre os pontos mais altos e baixos.",
-        scores: { friedman: 2, hayek: 1 }
-      },
-      {
-        text: "Preocupa quando se converte em conformismo e supressão de estilos de vida distintos: não por si mesma.",
+        text: "Preocupa quando se converte em conformismo e supressão de estilos de vida distintos, não pela diferença em si.",
         scores: { mill: 2, arendt: 1 }
       }
     ]
   },
 
-  // 5. O QUE É LIBERDADE
+  // 5. O QUE É LIBERDADE — 4 opções
   {
     text: "O que define uma pessoa genuinamente livre?",
     options: [
@@ -409,34 +385,26 @@ const questions = [
         scores: { mill: 2, nozick: 1 }
       },
       {
-        text: "Ter seus direitos inviolados: ninguém pode usar sua pessoa ou propriedade sem consentimento, nem o Estado.",
-        scores: { nozick: 2, mill: 1 }
+        text: "Ter direitos inviolados e operar dentro de regras gerais conhecidas de antemão, sem que ninguém dirija seus resultados.",
+        scores: { nozick: 2, hayek: 2, friedman: 1 }
       },
       {
         text: "Poder agir com outros no espaço público: liberdade não é isolamento, é capacidade de ação política coletiva.",
         scores: { arendt: 3 }
       },
       {
-        text: "Operar dentro de regras conhecidas de antemão, sem que ninguém dirija especificamente os seus resultados.",
-        scores: { hayek: 2, friedman: 1 }
-      },
-      {
-        text: "Ter liberdades básicas garantidas dentro de uma estrutura institucional justa: não basta ausência de coerção formal.",
-        scores: { rawls: 2, nussbaum: 1 }
-      },
-      {
-        text: "Ter capacidades reais para viver uma vida digna: saúde, educação e segurança material são condições da liberdade.",
-        scores: { nussbaum: 2, rawls: 1 }
+        text: "Ter liberdades básicas garantidas dentro de uma estrutura justa e capacidades reais para viver uma vida digna.",
+        scores: { rawls: 2, nussbaum: 2 }
       }
     ]
   },
 
-  // 6. SAÚDE
+  // 6. SAÚDE — 5 opções
   {
     text: "Como deve ser organizado o acesso à saúde?",
     options: [
       {
-        text: "Acesso à saúde é pré-condição para qualquer outra liberdade: não pode depender da renda.",
+        text: "Acesso à saúde é pré-condição para qualquer outra liberdade e não pode depender da renda.",
         scores: { nussbaum: 2, rawls: 1 }
       },
       {
@@ -452,97 +420,73 @@ const questions = [
         scores: { hayek: 2, nozick: 1 }
       },
       {
-        text: "Cada indivíduo tem o direito de decidir sobre sua saúde; o Estado não pode obrigar tratamentos nem forçar financiamento coletivo.",
-        scores: { nozick: 2, mill: 1 }
-      },
-      {
-        text: "O Estado pode promover saúde pública, mas deve respeitar estritamente a autonomia individual nas escolhas pessoais.",
-        scores: { mill: 2, friedman: 1 }
+        text: "Cada indivíduo tem o direito de decidir sobre sua saúde e o Estado deve respeitar plenamente essa autonomia.",
+        scores: { nozick: 2, mill: 2 }
       }
     ]
   },
 
-  // 7. EDUCAÇÃO
+  // 7. EDUCAÇÃO — 4 opções
   {
     text: "Como deve funcionar a educação numa sociedade justa?",
     options: [
       {
         text: "O Estado deve garantir educação pública de qualidade como pré-condição para igualdade real de oportunidades.",
-        scores: { rawls: 2, nussbaum: 1 }
+        scores: { rawls: 2, nussbaum: 2 }
       },
       {
-        text: "Educação deve cultivar pensamento crítico e autonomia: nenhuma instituição deve suprimir o dissenso intelectual.",
+        text: "Educação deve cultivar pensamento crítico e autonomia; nenhuma instituição pode suprimir o dissenso intelectual.",
         scores: { mill: 2, arendt: 1 }
       },
       {
-        text: "Vouchers educacionais permitem competição entre escolas; famílias escolhem e qualidade melhora.",
-        scores: { friedman: 2, hayek: 1 }
+        text: "Vouchers e competição entre escolas produzem mais qualidade; escolas estatais monopolísticas tendem à doutrinação.",
+        scores: { friedman: 2, hayek: 2 }
       },
       {
-        text: "Escolas estatais monopolísticas tendem à doutrinação; pluralismo educacional respeita diversidade de valores.",
-        scores: { hayek: 2, mill: 1 }
-      },
-      {
-        text: "Educação é a capacidade humana mais fundamental: sem ela, todas as demais liberdades são inacessíveis.",
-        scores: { nussbaum: 2, rawls: 1 }
-      },
-      {
-        text: "Educação cívica e formação para o espaço público são tão importantes quanto qualificação técnica.",
+        text: "Educação cívica e formação para o espaço público são tão importantes quanto capacidades técnicas e individuais.",
         scores: { arendt: 2, nussbaum: 1 }
       }
     ]
   },
 
-  // 8. DEMOCRACIA
+  // 8. DEMOCRACIA — 5 opções
   {
     text: "Quais são os limites legítimos da decisão democrática?",
     options: [
       {
-        text: "Democracia é legítima, mas limitada: não pode violar liberdades básicas nem impor redistribuições injustas.",
+        text: "Participação ativa dos cidadãos é o núcleo da liberdade política: sem ela, as instituições se esvaziam.",
+        scores: { arendt: 3 }
+      },
+      {
+        text: "Democracia é legítima, mas não pode violar liberdades básicas nem redistribuir de forma injusta.",
         scores: { rawls: 2, nozick: 1 }
       },
       {
-        text: "A tirania da maioria é o maior perigo: liberdades civis e diversidade de estilos de vida devem ser blindadas de votos.",
+        text: "A tirania da maioria é o maior perigo: liberdades civis e diversidade de estilos de vida devem ser blindadas.",
         scores: { mill: 2, nozick: 1 }
       },
       {
-        text: "Democracia ilimitada é o caminho para o socialismo: deve ser restringida por regras constitucionais rígidas.",
-        scores: { hayek: 2, friedman: 1 }
-      },
-      {
-        text: "Participação ativa dos cidadãos é o núcleo da liberdade política: sem ela, instituições se esvaziam.",
-        scores: { arendt: 3 }
+        text: "Democracia ilimitada leva ao socialismo: precisa ser restringida por constituição e política monetária sólida.",
+        scores: { hayek: 2, friedman: 2 }
       },
       {
         text: "Democracia deve garantir que todos participem com capacidades reais: voto sem educação e informação é insuficiente.",
         scores: { nussbaum: 2, rawls: 1 }
-      },
-      {
-        text: "Maiorias democráticas não podem violar direitos individuais; alguns domínios devem estar fora do alcance dos votos.",
-        scores: { nozick: 2, mill: 1 }
       }
     ]
   },
 
-  // 9. MERITOCRACIA
+  // 9. MERITOCRACIA — 4 opções
   {
     text: "A meritocracia é um princípio justo de organização social?",
     options: [
       {
-        text: "Só quando todos partirem de condições iniciais equiparadas: mérito em berço desigual não é mérito real.",
-        scores: { rawls: 2, nussbaum: 1 }
+        text: "Só quando todos partirem de condições equiparadas: mérito sem igualdade de oportunidades real não é mérito.",
+        scores: { rawls: 2, nussbaum: 2 }
       },
       {
-        text: "Talento sem acesso a educação e saúde nunca floresce: meritocracia sem capacidades básicas é ilusória.",
-        scores: { nussbaum: 2, rawls: 1 }
-      },
-      {
-        text: "Resultados de trocas voluntárias são legítimos independentemente do ponto de partida: corrigir isso viola direitos.",
-        scores: { nozick: 2, hayek: 1 }
-      },
-      {
-        text: "Mercados recompensam contribuição valorizada pelos outros; políticas de equalizar resultados destroem incentivos.",
-        scores: { friedman: 2, hayek: 1 }
+        text: "Resultados de trocas voluntárias são legítimos independentemente do ponto de partida; corrigir isso viola direitos.",
+        scores: { nozick: 2, hayek: 1, friedman: 1 }
       },
       {
         text: "Mérito é válido desde que não se torne hereditário: privilégio institucionalizado corrói mobilidade e autonomia.",
@@ -555,28 +499,24 @@ const questions = [
     ]
   },
 
-  // 10. MONOPÓLIOS E MERCADO
+  // 10. MONOPÓLIOS — 5 opções
   {
     text: "Como tratar monopólios e concentração de poder econômico?",
     options: [
       {
-        text: "Concentração econômica converte-se em poder político: regulação antitruste forte protege igualdade política.",
+        text: "Concentração econômica converte-se em poder político: regulação antitruste protege igualdade política.",
         scores: { rawls: 2, arendt: 1 }
       },
       {
         text: "Monopólios quase sempre resultam de privilégio estatal: menos intervenção é a solução, não mais regulação.",
-        scores: { hayek: 2, friedman: 1 }
+        scores: { hayek: 2, nozick: 1 }
       },
       {
         text: "Política monetária estável e regras claras combatem monopólios melhor do que burocracia regulatória.",
         scores: { friedman: 2, hayek: 1 }
       },
       {
-        text: "Monopolistas violam a liberdade de outros de competir livremente: ação antitruste é compatível com direitos.",
-        scores: { nozick: 2, mill: 1 }
-      },
-      {
-        text: "Concentração ameaça liberdade individual: Mill apoiaria cooperativas e concorrência real como antídoto.",
+        text: "Monopolistas violam a liberdade de outros de competir: ação antitruste é compatível com direitos individuais.",
         scores: { mill: 2, nozick: 1 }
       },
       {
@@ -586,29 +526,21 @@ const questions = [
     ]
   },
 
-  // 11. POBREZA
+  // 11. POBREZA — 4 opções
   {
     text: "Quem é responsável pela pobreza e como deve ser combatida?",
     options: [
       {
         text: "A estrutura social é corresponsável: pobreza resulta de instituições injustas que precisam ser reformadas.",
-        scores: { rawls: 2, nussbaum: 1 }
-      },
-      {
-        text: "Pobreza priva pessoas de capacidades básicas: combatê-la é obrigação de qualquer sociedade que respeite dignidade.",
-        scores: { nussbaum: 2, rawls: 1 }
+        scores: { rawls: 2, nussbaum: 2 }
       },
       {
         text: "Transferência direta de renda é mais eficiente que burocracia assistencial e respeita as escolhas individuais.",
         scores: { friedman: 2, mill: 1 }
       },
       {
-        text: "Caridade voluntária e crescimento econômico combatem pobreza melhor do que redistribuição coercitiva.",
-        scores: { nozick: 2, hayek: 1 }
-      },
-      {
-        text: "Crescimento gerado por mercados livres eleva todos os barcos; intervenções criam novas dependências e distorções.",
-        scores: { hayek: 2, friedman: 1 }
+        text: "Caridade voluntária e crescimento de mercados combatem pobreza melhor do que redistribuição coercitiva.",
+        scores: { nozick: 2, hayek: 2 }
       },
       {
         text: "Pobreza em massa destrói a cidadania ativa: massas destituídas são as mais suscetíveis a apelos autoritários.",
@@ -617,17 +549,13 @@ const questions = [
     ]
   },
 
-  // 12. CRISE ECONÔMICA
+  // 12. CRISE ECONÔMICA — 5 opções
   {
     text: "Diante de uma grave crise econômica, qual deve ser a prioridade?",
     options: [
       {
-        text: "Proteger os mais vulneráveis: crises aprofundam desigualdades que já eram injustas.",
-        scores: { rawls: 2, nussbaum: 1 }
-      },
-      {
-        text: "Garantir que ninguém perca capacidades básicas: saúde, educação e moradia não são negociáveis.",
-        scores: { nussbaum: 2, rawls: 1 }
+        text: "Proteger os mais vulneráveis e garantir que ninguém perca capacidades básicas: saúde, educação e moradia.",
+        scores: { rawls: 2, nussbaum: 2 }
       },
       {
         text: "Estabilizar a moeda e criar previsibilidade: inflação é a maior injustiça contra os mais pobres.",
@@ -635,64 +563,56 @@ const questions = [
       },
       {
         text: "Evitar que intervenções emergenciais se tornem permanentes: crises são pretexto clássico para expansão estatal.",
-        scores: { hayek: 2, friedman: 1 }
+        scores: { hayek: 2, nozick: 1, friedman: 1 }
       },
       {
         text: "Defender liberdades civis mesmo sob pressão: crises são o momento em que governos mais tentam suprimir dissenso.",
         scores: { mill: 2, arendt: 1 }
       },
       {
-        text: "Defender instituições democráticas contra soluções autoritárias: 'eficiência' de regimes fortes é a maior armadilha.",
+        text: "Defender instituições democráticas contra soluções autoritárias: a eficiência de regimes fortes é a maior armadilha.",
         scores: { arendt: 2, mill: 1 }
       }
     ]
   },
 
-  // 13. PROPRIEDADE PRIVADA
+  // 13. PROPRIEDADE PRIVADA — 4 opções
   {
     text: "Qual o fundamento e os limites da propriedade privada?",
     options: [
       {
-        text: "É legítima quando resulta de aquisições e transferências justas; o Estado não pode redistribuí-la sem violar direitos.",
-        scores: { nozick: 2, hayek: 1 }
+        text: "É legítima quando resulta de aquisições e transferências justas; redistribuí-la à força viola direitos individuais.",
+        scores: { nozick: 2, hayek: 1, friedman: 1 }
       },
       {
-        text: "É uma instituição necessária, mas deve ser regulada para que concentrações não se convertam em poder político.",
-        scores: { rawls: 2, arendt: 1 }
+        text: "É necessária, mas deve ser regulada para que concentrações não se convertam em poder político ou destruam o espaço público.",
+        scores: { rawls: 2, arendt: 2 }
       },
       {
-        text: "É a base da ordem espontânea: sem propriedade privada não há sistema de preços e o conhecimento disperso se perde.",
+        text: "É a base da ordem espontânea: sem ela não há sistema de preços e o conhecimento disperso se perde.",
         scores: { hayek: 2, friedman: 1 }
       },
       {
-        text: "É um direito importante, mas não pode ser o único critério: pessoas precisam de condições reais para exercer liberdade.",
-        scores: { nussbaum: 2, rawls: 1 }
-      },
-      {
-        text: "É um direito civil relevante, mas não pode sobrepor-se a liberdades de expressão e desenvolvimento individual.",
-        scores: { mill: 2, nozick: 1 }
-      },
-      {
-        text: "Propriedade excessivamente concentrada pode destruir o espaço público e criar condições para regimes autoritários.",
-        scores: { arendt: 2, rawls: 1 }
+        text: "É um direito importante, mas não pode sobrepor-se a liberdades de expressão e às condições reais de vida digna.",
+        scores: { mill: 2, nussbaum: 1 }
       }
     ]
   },
 
-  // 14. MULTICULTURALISMO
+  // 14. MULTICULTURALISMO — 5 opções
   {
     text: "Como o Estado deve lidar com diversidade cultural e proteção de minorias?",
     options: [
       {
-        text: "Princípios de justiça devem ser neutros quanto às concepções de bem: o Estado protege liberdades iguais, não culturas.",
+        text: "Princípios de justiça devem ser neutros: o Estado protege liberdades iguais para todos, não culturas específicas.",
         scores: { rawls: 2, nozick: 1 }
       },
       {
-        text: "Cada pessoa tem o direito de florescer segundo sua própria concepção de vida digna: Estado garante capacidades, não cultura.",
+        text: "Cada pessoa tem o direito de florescer segundo sua própria concepção de vida digna; Estado garante capacidades, não cultura.",
         scores: { nussbaum: 2, mill: 1 }
       },
       {
-        text: "Liberdade de expressão protege minorias melhor do que legislação: debate aberto é o melhor antídoto à intolerância.",
+        text: "Liberdade de expressão protege minorias melhor que legislação; debate aberto é o melhor antídoto à intolerância.",
         scores: { mill: 2, hayek: 1 }
       },
       {
@@ -700,27 +620,19 @@ const questions = [
         scores: { arendt: 2, mill: 1 }
       },
       {
-        text: "Tradições e ordens espontâneas evoluem; engenharia cultural pelo Estado produz resultados coercitivos imprevisíveis.",
-        scores: { hayek: 2, nozick: 1 }
-      },
-      {
-        text: "O Estado não deve discriminar nem forçar associações: neutralidade é a melhor política cultural possível.",
-        scores: { nozick: 2, friedman: 1 }
+        text: "Tradições evoluem espontaneamente; engenharia cultural pelo Estado produz resultados coercitivos imprevisíveis.",
+        scores: { hayek: 2, nozick: 2 }
       }
     ]
   },
 
-  // 15. PLANEJAMENTO VS. MERCADO
+  // 15. PLANEJAMENTO VS. MERCADO — 4 opções
   {
     text: "Quem decide melhor sobre alocação de recursos numa sociedade complexa?",
     options: [
       {
         text: "Processos de mercado: nenhuma autoridade central possui o conhecimento disperso que os preços coordenam.",
-        scores: { hayek: 2, friedman: 1 }
-      },
-      {
-        text: "Mercados, dentro de regras constitucionais simples e moeda estável: planejamento produz instabilidade crônica.",
-        scores: { friedman: 2, hayek: 1 }
+        scores: { hayek: 2, friedman: 2, nozick: 1 }
       },
       {
         text: "Mercados para a maioria das decisões, mas o Estado deve corrigir falhas que produzem injustiças estruturais.",
@@ -731,10 +643,6 @@ const questions = [
         scores: { nussbaum: 2, rawls: 1 }
       },
       {
-        text: "Mercados ampliam escolhas e autonomia, mas requerem concorrência real e proteção de direitos individuais.",
-        scores: { nozick: 2, mill: 1 }
-      },
-      {
         text: "A questão econômica é secundária: o que destrói sociedades é a concentração de poder, não o modelo de alocação.",
         scores: { arendt: 2, rawls: 1 }
       }
@@ -742,7 +650,6 @@ const questions = [
   }
 
 ];
-
 
 // Embaralha perguntas
 questions.sort(() => Math.random() - 0.5);
