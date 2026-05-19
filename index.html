@@ -1,0 +1,326 @@
+import os
+
+html_content = """
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Qual Pensador Liberal Mais Combina com Você?</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #quiz-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            max-width: 750px;
+            width: 90%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .question {
+            font-size: 1.25em;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            padding: 14px;
+            border: 2px solid #3498db;
+            background-color: white;
+            color: #3498db;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: left;
+        }
+
+        button:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        #progress {
+            height: 100%;
+            width: 0%;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+
+        #result {
+            display: none;
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #27ae60;
+        }
+
+        .result-desc {
+            margin-top: 15px;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        .restart-btn {
+            margin-top: 25px;
+            padding: 12px 20px;
+            border: none;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .restart-btn:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+
+    <div id="quiz-ui">
+        <h1>Qual Pensador Liberal Mais Combina com Você?</h1>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <div id="question-text" class="question"></div>
+
+        <div id="options-container" class="options"></div>
+    </div>
+
+    <div id="result">
+        <h1>Seu Resultado</h1>
+
+        <div id="result-text" class="result-title"></div>
+
+        <div id="result-desc" class="result-desc"></div>
+
+        <button class="restart-btn" onclick="location.reload()">
+            Refazer Quiz
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+const questions = [
+
+    {
+        text: "Qual deveria ser o principal objetivo da política?",
+        options: [
+            { text: "Garantir justiça social e proteger os menos favorecidos.", type: "rawls" },
+            { text: "Maximizar a liberdade individual e o desenvolvimento humano.", type: "mill" },
+            { text: "Preservar uma ordem espontânea baseada em liberdade econômica.", type: "hayek" },
+            { text: "Garantir eficiência econômica com mínima interferência estatal.", type: "friedman" },
+            { text: "Assegurar condições reais para uma vida digna.", type: "nussbaum" },
+            { text: "Proteger a liberdade política e evitar formas de autoritarismo.", type: "arendt" }
+        ]
+    },
+
+    {
+        text: "Sobre desigualdade econômica:",
+        options: [
+            { text: "Desigualdades só são legítimas se beneficiarem os mais pobres.", type: "rawls" },
+            { text: "Desigualdade é aceitável desde que preserve liberdade individual.", type: "mill" },
+            { text: "Tentar eliminar desigualdades ameaça a liberdade.", type: "hayek" },
+            { text: "O crescimento econômico é mais importante que igualdade.", type: "friedman" },
+            { text: "O foco deve ser garantir capacidades humanas reais.", type: "nussbaum" },
+            { text: "Sociedades massificadas enfraquecem liberdade e pluralismo.", type: "arendt" }
+        ]
+    },
+
+    {
+        text: "Qual deve ser o papel do Estado?",
+        options: [
+            { text: "Garantir igualdade de oportunidades e justiça social.", type: "rawls" },
+            { text: "Preservar liberdades individuais fundamentais.", type: "mill" },
+            { text: "Proteger contratos e evitar planejamento econômico.", type: "hayek" },
+            { text: "Criar regras simples e previsíveis para o mercado.", type: "friedman" },
+            { text: "Investir em educação, saúde e dignidade humana.", type: "nussbaum" },
+            { text: "Fortalecer instituições democráticas e participação política.", type: "arendt" }
+        ]
+    },
+
+    {
+        text: "O que mais ameaça uma sociedade livre?",
+        options: [
+            { text: "Instituições injustas e privilégios estruturais.", type: "rawls" },
+            { text: "Conformismo social e tirania da maioria.", type: "mill" },
+            { text: "O crescimento excessivo do poder estatal.", type: "hayek" },
+            { text: "Inflação e políticas econômicas desorganizadas.", type: "friedman" },
+            { text: "Pobreza e ausência de oportunidades reais.", type: "nussbaum" },
+            { text: "Autoritarismo e destruição do espaço público.", type: "arendt" }
+        ]
+    },
+
+    {
+        text: "Qual dessas frases mais combina com você?",
+        options: [
+            { text: "Uma sociedade justa deve priorizar os menos favorecidos.", type: "rawls" },
+            { text: "A individualidade é essencial para o progresso humano.", type: "mill" },
+            { text: "Nenhuma autoridade consegue planejar toda a sociedade.", type: "hayek" },
+            { text: "Liberdade econômica fortalece liberdade política.", type: "friedman" },
+            { text: "Direitos formais não bastam sem capacidades reais.", type: "nussbaum" },
+            { text: "A política existe para preservar pluralidade e liberdade.", type: "arendt" }
+        ]
+    }
+
+];
+
+let currentQuestion = 0;
+
+let scores = {
+    rawls: 0,
+    mill: 0,
+    hayek: 0,
+    friedman: 0,
+    nussbaum: 0,
+    arendt: 0
+};
+
+function loadQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question-text").innerText = q.text;
+
+    const optionsContainer = document.getElementById("options-container");
+
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach(option => {
+
+        const btn = document.createElement("button");
+
+        btn.innerText = option.text;
+
+        btn.onclick = () => selectOption(option.type);
+
+        optionsContainer.appendChild(btn);
+
+    });
+
+    document.getElementById("progress").style.width =
+        ((currentQuestion / questions.length) * 100) + "%";
+}
+
+function selectOption(type) {
+
+    scores[type]++;
+
+    currentQuestion++;
+
+    if(currentQuestion < questions.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+
+    document.getElementById("quiz-ui").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    let winner = Object.keys(scores).reduce((a, b) =>
+        scores[a] > scores[b] ? a : b
+    );
+
+    const results = {
+
+        rawls: {
+            title: "John Rawls",
+            desc: "Você valoriza justiça social, igualdade de oportunidades e instituições que protejam os menos favorecidos."
+        },
+
+        mill: {
+            title: "John Stuart Mill",
+            desc: "Você prioriza liberdade individual, diversidade de opiniões e autonomia pessoal."
+        },
+
+        hayek: {
+            title: "Friedrich Hayek",
+            desc: "Você acredita na ordem espontânea do mercado e desconfia da expansão do poder estatal."
+        },
+
+        friedman: {
+            title: "Milton Friedman",
+            desc: "Você valoriza liberdade econômica, mercados livres e intervenção estatal mínima."
+        },
+
+        nussbaum: {
+            title: "Martha Nussbaum",
+            desc: "Você acredita que dignidade humana e capacidades reais devem ser o centro da política."
+        },
+
+        arendt: {
+            title: "Hannah Arendt",
+            desc: "Você valoriza pluralismo, democracia, participação política e a defesa do espaço público contra o autoritarismo."
+        }
+
+    };
+
+    document.getElementById("result-text").innerText =
+        results[winner].title;
+
+    document.getElementById("result-desc").innerText =
+        results[winner].desc;
+
+    document.getElementById("progress").style.width = "100%";
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Arquivo index.html criado com sucesso!")
